@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RandomLocation
+  - Ground
+  - Package
+  - PatrolTiles
+  - Enemies
   layers:
   - Default
   - TransparentFX
@@ -12,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Boxes
+  - PatrolTiles
+  - Player
   - 
   - 
   - 
@@ -38,6 +43,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 790146291
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: House
+    uniqueID: 1320763721
+    locked: 0
+  - name: Player
+    uniqueID: 1471474015
     locked: 0
