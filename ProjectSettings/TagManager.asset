@@ -12,6 +12,7 @@ TagManager:
   - RechargeStation
   - BatteryPickup
   - BalloonKiller
+  - Randomizer
   layers:
   - Default
   - TransparentFX

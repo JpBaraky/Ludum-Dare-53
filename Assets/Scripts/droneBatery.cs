@@ -73,6 +73,8 @@ public class droneBatery: MonoBehaviour {
             isLandedOnRechargeStation = true;
         } else if(other.gameObject.CompareTag("BatteryPickup")) {
             CollectBatteryPickup(other.gameObject);
+        } else if(other.gameObject.CompareTag("Enemies")) {
+            DrainBatteryOnCollision();
         }
     }
 
@@ -92,5 +94,14 @@ public class droneBatery: MonoBehaviour {
             batteryPickupTimer = batteryPickupCooldown;
             Destroy(pickupObject);
         }
+    }
+    void DrainBatteryOnCollision() {
+        batteryLevel -= 1f; // decrease the battery level by 1 units on collision with an enemy
+        if(batteryLevel <= 0f) {
+            batteryLevel = 0f;
+            isBatteryDepleted = true;
+            Debug.Log("Battery depleted! Drone is unusable.");
+        }
+        UpdateBatteryLevelBar();
     }
 }

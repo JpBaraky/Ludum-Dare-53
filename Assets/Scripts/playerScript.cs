@@ -14,6 +14,7 @@ public class playerScript: MonoBehaviour {
 
     [Header("Package")]
     public bool hasPackage;
+      
     public GameObject package;
     public GameObject packagePrefab;
     public int currentBoxHealth;
@@ -28,12 +29,20 @@ public class playerScript: MonoBehaviour {
     [Header("Animations")]
     public Sprite[] animations;
 
+    [Header("Sound")]
+    public AudioSource droneSound;
+    public AudioSource hitSound;
+    public AudioClip hitEffect;
+    private bool droneIsOn;
+    private bool hasBeenHit;
+
   
     // Start is called before the first frame update
     void Start() {
         droneBatery= GetComponent<droneBatery>();
         playerRb = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<SpriteRenderer>();
+      
        
     }
 
@@ -49,8 +58,19 @@ public class playerScript: MonoBehaviour {
         }
         verticalInput = Input.GetAxisRaw("Vertical");
         if(verticalInput > 0 ) {
-            
+            droneIsOn = true;
+            playerRb.gravityScale = 0.2f;
             playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed,verticalInput * Time.fixedDeltaTime * speed);
+        }
+        else {
+            if(verticalInput < 0) {
+                droneIsOn = true;
+                playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed,verticalInput * Time.fixedDeltaTime * speed);
+               
+            } else {
+                droneIsOn = false;
+            }
+           
         }
         if(grounded && verticalInput > 0) {
            
@@ -78,6 +98,7 @@ public class playerScript: MonoBehaviour {
 
         
         PackageHealth.currentBoxHealth = currentBoxHealth;
+        PlayDroneSound();
         }
         
        
@@ -88,11 +109,28 @@ public class playerScript: MonoBehaviour {
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.tag == "Enemies" && hasPackage) {
-            DropPackage();
+        if(collision.gameObject.tag == "Enemies") {
+            hitSound.PlayOneShot(hitEffect);
+            if(hasPackage) {
+
+                DropPackage();
+            }
+        }
+        if(collision.gameObject.tag == "Randomizer") {
+            collision.GetComponent<randomDelivery>().RandomPosition();
+        }
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "Enemies") {
+            hitSound.PlayOneShot(hitEffect);
+            if(hasPackage) {
+
+                DropPackage();
+            }
         }
     }
-        void DroneAnimation() {
+    void DroneAnimation() {
         if(Input.GetButton("Jump")) {
             playerRenderer.sprite = animations[1];
         } else {
@@ -104,9 +142,18 @@ public class playerScript: MonoBehaviour {
         hasPackage = false;
         package.transform.GetChild(0).gameObject.SetActive(false);
         GameObject Box = Instantiate(packagePrefab,package.transform.position,transform.localRotation);
+        Box.GetComponent<PackageHealth>().initialPosition = GameObject.Find("PackageParent").transform.position;
         tempPackageHealth = Box.GetComponent<PackageHealth>();
         tempPackageHealth.currentBoxHealth = currentBoxHealth;
 
     }
+    private void PlayDroneSound() {
+        if(droneIsOn) {
+
+            droneSound.enabled = true;
+        } else {
+        droneSound.enabled = false;}
+    }
+
 }
 

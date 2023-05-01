@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4008910324160990498}
   - component: {fileID: 4008910324160990501}
   - component: {fileID: 4008910324160990500}
-  - component: {fileID: 4008910324160990503}
+  - component: {fileID: 2808949924056742634}
   m_Layer: 0
   m_Name: ArvorePlanicie (3)
   m_TagString: Enemies
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -795722863
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 10c4bae33db2f444ea9d7fcb9fab2033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,8 +107,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &4008910324160990503
-BoxCollider2D:
+--- !u!60 &2808949924056742634
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,10 +117,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.20331955, y: -0.813272}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,6 +130,29 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.431549, y: 6.373456}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8255386, y: 0.48896837}
+      - {x: 1.2395325, y: 0.68104124}
+      - {x: 0.45677567, y: 1.8050382}
+      - {x: 0.0625, y: 2.625}
+      - {x: -0.23874664, y: 2.293786}
+      - {x: -0.55125046, y: 2.6760268}
+      - {x: -1.447525, y: 2.81952}
+      - {x: -1.5785446, y: 2.125}
+      - {x: -1.8850288, y: 1.6947408}
+      - {x: -1.6207695, y: 1.2532296}
+      - {x: -1.25, y: 0.625}
+      - {x: -1.3512726, y: 0.23752356}
+      - {x: -1.8820229, y: 0.02952528}
+      - {x: -2.2927818, y: -0.43248558}
+      - {x: -2.1697884, y: -0.966022}
+      - {x: -1.843029, y: -1.3777876}
+      - {x: -0.5625, y: -1.6875}
+      - {x: -0.0625, y: -1.875}
+      - {x: -0.4375, y: -3.8125}
+      - {x: -0.4375, y: -4}
+      - {x: 1.4375, y: -4}
+      - {x: 1.4375, y: -3.875}
+      - {x: 0.875, y: -2}
+      - {x: 1.211792, y: -0.1267848}

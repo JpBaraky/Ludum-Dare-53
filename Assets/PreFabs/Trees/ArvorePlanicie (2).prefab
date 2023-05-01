@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2369090472203506107}
   - component: {fileID: 2369090472203506104}
   - component: {fileID: 2369090472203506105}
-  - component: {fileID: 2369090472203506110}
+  - component: {fileID: 4446971166476820066}
   m_Layer: 0
   m_Name: ArvorePlanicie (2)
   m_TagString: Enemies
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -795722863
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8a52d81d8cd0d7e469faba7d263a7a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,8 +107,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2369090472203506110
-BoxCollider2D:
+--- !u!60 &4446971166476820066
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,10 +117,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.7069607, y: -0.80015993}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,6 +130,49 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.5860786, y: 6.39968}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0625, y: -1.625}
+      - {x: 0.5625, y: -0.75}
+      - {x: 1.0224762, y: -0.8004719}
+      - {x: 1.3665199, y: -0.68316054}
+      - {x: 1.6115913, y: -0.87421006}
+      - {x: 1.8221588, y: -0.49014163}
+      - {x: 1.844635, y: -0.059740424}
+      - {x: 1.4970436, y: 0.8012619}
+      - {x: 1.6656113, y: 1.5800471}
+      - {x: 1.6228294, y: 1.8517338}
+      - {x: 1.2590675, y: 2.1305194}
+      - {x: 0.68533325, y: 2.1817808}
+      - {x: -0.075904846, y: 1.9507076}
+      - {x: -0.7584801, y: 2.4507074}
+      - {x: -1.1713333, y: 2.4169936}
+      - {x: -1.5638809, y: 2.4380898}
+      - {x: -1.754139, y: 2.1705427}
+      - {x: -1.5841866, y: 1.4514976}
+      - {x: -2.0069008, y: 0.65575504}
+      - {x: -2.3742104, y: 0.44301915}
+      - {x: -2.2969208, y: -0.028195381}
+      - {x: -1.9345436, y: -0.7774057}
+      - {x: -2.5954247, y: -1.3560729}
+      - {x: -2.6179008, y: -2.0603304}
+      - {x: -2.125, y: -2.8125}
+      - {x: -1.9375, y: -3.0625}
+      - {x: -2.125, y: -3.375}
+      - {x: -2.1875, y: -3.625}
+      - {x: -2.1875, y: -4}
+      - {x: -0.375, y: -4}
+      - {x: -0.3125, y: -3.8125}
+      - {x: -0.5625, y: -3.375}
+      - {x: 0, y: -2.25}
+    - - {x: -1.125, y: -1.4375}
+      - {x: -1.125, y: -1.8125}
+      - {x: -1.0625, y: -1.8125}
+    - - {x: -0.5625, y: -0.6875}
+      - {x: -0.4375, y: -0.6875}
+      - {x: -0.25, y: -0.5}
+      - {x: -0.375, y: -0.125}
+      - {x: -0.1875, y: -0.3125}
+      - {x: -0.125, y: -0.6875}
+      - {x: -0.3125, y: -0.875}
+      - {x: -0.375, y: -0.875}

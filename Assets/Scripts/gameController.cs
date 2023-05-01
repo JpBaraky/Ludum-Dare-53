@@ -16,6 +16,8 @@ public class gameController : MonoBehaviour {
     private float currentTime = 0f;
 
     public playerEvaluator playerEvaluator;
+    private changeScene changeScene;
+    
     public enum GameMode {
         Delivery,
         Destruction
@@ -25,6 +27,8 @@ public class gameController : MonoBehaviour {
 
     private void Start() {
         playerEvaluator = GetComponent<playerEvaluator>();
+        changeScene= GetComponent<changeScene>();
+        Application.targetFrameRate = (int)Screen.currentResolution.refreshRate;
     }
     void Update() {
         Timer();
@@ -41,19 +45,29 @@ public class gameController : MonoBehaviour {
             if(gameOverTimer >= gameOverDelay) {
                 isGameOver = true;
                 gameOverScreen.SetActive(true);
-                Time.timeScale = 0f; // Pause the game
+                changeScene.isChangeScene = true;
+                
             }
         } else if(!isGameOver && arePackagesCompleted) {
 
             isGameOver = true;
             gameWinScreen.SetActive(true);
+            
+
             List<PackageHealth> packageHealthList = new List<PackageHealth>();
             PackageHealth[] packageHealths = FindObjectsOfType<PackageHealth>();
             foreach(PackageHealth packageHealth in packageHealths) {
                 packageHealthList.Add(packageHealth);
             }
             Debug.Log(playerEvaluator.Evaluate(packageHealthList,currentTime));
-            Time.timeScale = 0f; // Pause the game
+            if(playerEvaluator.Evaluate(packageHealthList,currentTime) == 5) {
+
+                gameWinScreen.GetComponent<AudioSource>().Play();
+            }
+            
+            changeScene.isChangeScene = true;
+            //Time.timeScale = 0f; // Pause the game
+
         }
     }
 
@@ -85,4 +99,8 @@ public class gameController : MonoBehaviour {
         currentTime += Time.deltaTime;
         timerText.text = "TIME: " + currentTime.ToString("F2");
     }
+
+   
+
+    
 }

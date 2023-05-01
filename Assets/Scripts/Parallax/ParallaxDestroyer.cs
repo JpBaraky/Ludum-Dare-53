@@ -12,7 +12,7 @@ public class ParallaxDestroyer: MonoBehaviour {
 
     void Start() {
         mainCamera = gameObject.GetComponent<Camera>();
-        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width * 1.2f,Screen.height,mainCamera.transform.position.z));
+        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width * 1.5f,Screen.height,mainCamera.transform.position.z));
         foreach(GameObject obj in levels) {
             loadChildObjects(obj);
         }

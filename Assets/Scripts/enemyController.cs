@@ -22,7 +22,7 @@ public class enemyController: MonoBehaviour {
     private Animator enemyAnimator;
     public enemyState currentState;
    
-    private GameObject alertSign;
+  
     
     [Header("Movement System")]
     private Vector3 enemyDirection = Vector3.right;
@@ -65,7 +65,7 @@ public class enemyController: MonoBehaviour {
         whatIsPlayer = LayerMask.GetMask("Player");
         
 
-        alertSign = this.transform.Find("ExclamationSign").gameObject;
+    
     }
 
 

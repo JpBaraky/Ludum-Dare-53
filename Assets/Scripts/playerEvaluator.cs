@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class playerEvaluator: MonoBehaviour {
     public int maxStars = 5;
-    public int minPackagesForOneStar = 1;
-    public float minAveragePackageHealthForOneStar = 0.5f;
+    public int minPackagesForOneStar = 5;
+    public float minAveragePackageHealthForOneStar = 2f;
     public float maxTimeForOneStar = 60f;
-
+    public int stars;
     public List<GameObject> starIcons;
-
+    
     public Sprite[] starImage;
 
     public int Evaluate(List<PackageHealth> packages,float totalTime) {
@@ -31,7 +31,7 @@ public class playerEvaluator: MonoBehaviour {
         float averageHealth = totalHealth / packages.Count;
 
         // Calculate the number of stars
-        int stars = maxStars;
+        stars = maxStars;
         if(deliveredCount < minPackagesForOneStar) {
             stars--;
         }
@@ -43,13 +43,14 @@ public class playerEvaluator: MonoBehaviour {
         }
 
         // Turn on/off stars based on score
-        for(int i = 0; i > starIcons.Count; i--) {
-            if(i > stars) {
-               
+        for(int i = 0; i < starIcons.Count; i++) {
+            
+            if(i < stars) {
                 starIcons[i].GetComponent<Image>().sprite = starImage[0];
-                
+              
             } else {
                 starIcons[i].GetComponent<Image>().sprite = starImage[1];
+                
             }
         }
 

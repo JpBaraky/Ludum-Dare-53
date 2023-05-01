@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CatLogoScene/Logo Gato.unity
+    guid: 090604e512731ee40913f7afa4a19f4e
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 2b6da20c28362e34fbdf4eb665f006f6
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndCredits.unity
+    guid: f5faa5c85025eda46a72f204d01b9904
   m_configObjects: {}

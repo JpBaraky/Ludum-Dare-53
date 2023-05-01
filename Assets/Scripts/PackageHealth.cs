@@ -14,8 +14,12 @@ public class PackageHealth: MonoBehaviour {
     public BoxCollider2D bigCollider;
     public BoxCollider2D smallCollider;
     public float minHeight = 2;
-    private Vector2 initialPosition;
+    public Vector2 initialPosition;
     public bool isDelivered;
+    
+    public AudioSource boxAudio;
+    public AudioClip boxClip;
+    public AudioClip boxDelivery;
 
     // Start is called before the first frame update
     void Start() {
@@ -31,7 +35,10 @@ public class PackageHealth: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        initialPosition = GameObject.Find("PackageParent").transform.position;
+        
+        
+      
+        
         switch(currentBoxHealth) {
             case 3:
             boxSpriteRenderer.sprite = boxStages[0];
@@ -62,12 +69,14 @@ public class PackageHealth: MonoBehaviour {
 
             CheckHeight();
             
+            
         }
     }
     void CheckHeight() {
         float dropHeight = initialPosition.y - transform.position.y;
        
         if(dropHeight >= minHeight) {
+            boxAudio.PlayOneShot(boxClip);
             currentBoxHealth -= 1;
         }
     }
@@ -76,5 +85,7 @@ public class PackageHealth: MonoBehaviour {
     }
     void DeliveryPackage() {
         isDelivered= true;
+        boxAudio.PlayOneShot(boxDelivery);
+        boxColliderPickUp.enabled = false;
     }
 }
