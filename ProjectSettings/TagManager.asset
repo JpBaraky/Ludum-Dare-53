@@ -9,6 +9,9 @@ TagManager:
   - Package
   - PatrolTiles
   - Enemies
+  - RechargeStation
+  - BatteryPickup
+  - BalloonKiller
   layers:
   - Default
   - TransparentFX
@@ -46,12 +49,24 @@ TagManager:
   - name: BackGround
     uniqueID: 790146291
     locked: 0
+  - name: Trees
+    uniqueID: 3499244433
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: House
     uniqueID: 1320763721
     locked: 0
+  - name: PickUps
+    uniqueID: 1762766389
+    locked: 0
+  - name: Enemies
+    uniqueID: 1963965081
+    locked: 0
   - name: Player
     uniqueID: 1471474015
+    locked: 0
+  - name: UI
+    uniqueID: 645392289
     locked: 0

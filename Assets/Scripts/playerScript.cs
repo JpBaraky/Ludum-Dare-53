@@ -3,46 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerScript: MonoBehaviour {
+
     private Rigidbody2D playerRb;
     private SpriteRenderer playerRenderer;
-    private float h, v;//Joystic input
+    public static float horizontalInput, verticalInput;
     public float speed;
-    public GameObject healthBar;
-    public bool onMouse;
-    public int maxHealth;
-    public int currentHealth;
+
+    [Header("Battery")]
+    private droneBatery droneBatery;
+
+    [Header("Package")]
     public bool hasPackage;
     public GameObject package;
     public GameObject packagePrefab;
-    private bool Grounded;
-    public Transform groundCheck;
-    public LayerMask whatIsGround;
-    public Sprite[] animations;
     public int currentBoxHealth;
     public PackageHealth PackageHealth;
-    public PackageHealth tempPackageHealth;
+    private PackageHealth tempPackageHealth;
+
+    [Header("Ground Check")]
+    public bool grounded;
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
+
+    [Header("Animations")]
+    public Sprite[] animations;
+
+  
     // Start is called before the first frame update
     void Start() {
+        droneBatery= GetComponent<droneBatery>();
         playerRb = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = maxHealth;
+       
     }
 
     // Update is called once per frame
     void Update() {
+        if(droneBatery.isBatteryDepleted) {
+            return;
+        }
         DroneAnimation();
-        if(!Grounded) {
-            h = Input.GetAxis("Horizontal");
-            this.transform.rotation = Quaternion.AngleAxis(-15 * h,new Vector3(0,0,1));
+        if(!grounded) {
+            horizontalInput = Input.GetAxis("Horizontal");
+            this.transform.rotation = Quaternion.AngleAxis(-15 * horizontalInput,new Vector3(0,0,1));
         }
-        v = Input.GetAxisRaw("Vertical");
-        if(v > 0 ) {
+        verticalInput = Input.GetAxisRaw("Vertical");
+        if(verticalInput > 0 ) {
             
-            playerRb.velocity = new Vector2(h * Time.fixedDeltaTime * speed,v * Time.fixedDeltaTime * speed);
+            playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed,verticalInput * Time.fixedDeltaTime * speed);
         }
-        if(Grounded && v >0) {
+        if(grounded && verticalInput > 0) {
            
-            playerRb.velocity = new Vector2(0,v * Time.fixedDeltaTime * speed);
+            playerRb.velocity = new Vector2(0,verticalInput * Time.fixedDeltaTime * speed);
 
         }
         if(hasPackage) {
@@ -62,28 +74,13 @@ public class playerScript: MonoBehaviour {
        
         
        
-        Grounded = Physics2D.OverlapCircle(groundCheck.position,0.02f,whatIsGround);
+        grounded = Physics2D.OverlapCircle(groundCheck.position,0.02f,whatIsGround);
 
-        HealthBarRotation();
-            Health();
+        
         PackageHealth.currentBoxHealth = currentBoxHealth;
         }
-        void HealthBarRotation() {
-            if(onMouse) {
-
-                if(Input.GetKey(KeyCode.Q)) {
-                    healthBar.transform.Rotate(0,0,Time.deltaTime * speed);
-                }
-                if(Input.GetKey(KeyCode.E)) {
-                    healthBar.transform.Rotate(0,0,Time.deltaTime * -speed);
-                }
-            }
-        }
-        void Health() {
-            if(currentHealth <= 0) {
-                Debug.Log("GameOver");
-            }
-        }
+        
+       
     private void OnTriggerStay2D(Collider2D collision) {
         if(Input.GetButton("Jump") && !hasPackage) {
 

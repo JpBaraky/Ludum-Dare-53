@@ -175,14 +175,20 @@ public class enemyController: MonoBehaviour {
 
     }
     IEnumerator ThrowStone() {
-        if(stoneThrown)
-        yield return new WaitForSeconds(1);
-        GameObject RockTemp = Instantiate(rockObject,handPosition.transform.position,transform.localRotation);
-        if(this.transform.localScale.x != 1) {
-            RockTemp.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+        if(stoneThrown) {
+            float tempSpeed = EnemySpeed;
+            EnemySpeed = 0;
+            yield return new WaitForSeconds(0.5f);
+            GameObject RockTemp = Instantiate(rockObject,handPosition.transform.position,transform.localRotation);
+           
+
+            RockTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(this.transform.localScale.x * rockX,rockY + 100));
+            RockTemp.GetComponent<Rigidbody2D>().AddTorque(45,ForceMode2D.Impulse);
+            stoneThrown = false;
+            
+            EnemySpeed = tempSpeed;
+            
         }
-        RockTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2((this.transform.localScale.x * rockX) ,rockY));
-        stoneThrown= false;
     }
     
 
