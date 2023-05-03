@@ -7,6 +7,7 @@ public class gameController : MonoBehaviour {
     public droneBatery droneBatteryScript;
     public GameObject gameOverScreen;
     public GameObject gameWinScreen;
+    public playerScript playerScript;
     public float gameOverDelay = 3f;
 
     private bool isGameOver = false;
@@ -29,11 +30,12 @@ public class gameController : MonoBehaviour {
         playerEvaluator = GetComponent<playerEvaluator>();
         changeScene= GetComponent<changeScene>();
         Application.targetFrameRate = (int)Screen.currentResolution.refreshRate;
+        PlayerPrefs.DeleteAll();
     }
     void Update() {
         Timer();
         bool arePackagesCompleted = false;
-
+       
         if(gameMode == GameMode.Delivery) {
             arePackagesCompleted = AreAllPackagesDelivered();
         } else if(gameMode == GameMode.Destruction) {
@@ -76,6 +78,9 @@ public class gameController : MonoBehaviour {
     }
 
     bool AreAllPackagesDelivered() {
+        if(playerScript.hasPackage) {
+            return false;
+        }
         GameObject[] packageObjects = GameObject.FindGameObjectsWithTag("Package");
         foreach(GameObject packageObject in packageObjects) {
             PackageHealth package = packageObject.GetComponent<PackageHealth>();
@@ -87,6 +92,9 @@ public class gameController : MonoBehaviour {
     }
 
     bool AreAllPackagesDestroyed() {
+        if(playerScript.hasPackage) {
+            return false;
+        }
         GameObject[] packageObjects = GameObject.FindGameObjectsWithTag("Package");
         foreach(GameObject packageObject in packageObjects) {
             if(packageObject.activeInHierarchy) {

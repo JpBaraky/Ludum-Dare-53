@@ -2691,7 +2691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.014872, y: -2.0070581, z: -10}
+  m_LocalPosition: {x: -3.8148727, y: -2.0070581, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12104,6 +12104,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 9064754644154167800, guid: a1b730e71b450094ba58927a3cc455fc, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 645392289
+      objectReference: {fileID: 0}
     - target: {fileID: 9064754644154167801, guid: a1b730e71b450094ba58927a3cc455fc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -17676,6 +17680,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: -2100757962940285078, guid: 9349b4815542c4b4ab65f90facc00bca, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b61d6b31736bfa448a2de33abf2c3df, type: 3}
     - target: {fileID: -1421316832109175169, guid: 9349b4815542c4b4ab65f90facc00bca, type: 3}
       propertyPath: currentBoxHealth
       value: 3
@@ -21348,7 +21356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.77899, y: -67.39296}
+  m_AnchoredPosition: {x: 122.77899, y: -67.392975}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &2042001388 stripped
@@ -21884,6 +21892,7 @@ MonoBehaviour:
   droneBatteryScript: {fileID: 145507761}
   gameOverScreen: {fileID: 644172924}
   gameWinScreen: {fileID: 2094219974}
+  playerScript: {fileID: 145507756}
   gameOverDelay: 5
   timerText: {fileID: 1311131682}
   playerEvaluator: {fileID: 0}

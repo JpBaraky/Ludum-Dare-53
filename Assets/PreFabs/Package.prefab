@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7626e4c416a48f4468fd28da5682c63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffect: {fileID: 8300000, guid: ef44e8f0fff050b489920ddded2c9d14, type: 3}
+  soundEffect: {fileID: 8300000, guid: 4508a736adf73444e947b93260a87d25, type: 3}
   pitchRange: 0.2
   audioSource: {fileID: -2100757962940285078}
 --- !u!82 &-2100757962940285078
@@ -314,7 +314,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4508a736adf73444e947b93260a87d25, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1

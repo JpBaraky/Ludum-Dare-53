@@ -84,8 +84,15 @@ public class PackageHealth: MonoBehaviour {
         gameObject.SetActive(false);
     }
     void DeliveryPackage() {
+        
         isDelivered= true;
         boxAudio.PlayOneShot(boxDelivery);
         boxColliderPickUp.enabled = false;
+        StartCoroutine(DestroyDelivery());
+    }
+    IEnumerator DestroyDelivery() {
+        yield return new WaitForSeconds(1);
+        boxRigidBody.bodyType = RigidbodyType2D.Static;
+        bigCollider.enabled = false;
     }
 }
