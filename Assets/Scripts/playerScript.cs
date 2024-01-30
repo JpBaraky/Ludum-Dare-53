@@ -57,20 +57,30 @@ public class playerScript: MonoBehaviour {
             this.transform.rotation = Quaternion.AngleAxis(-15 * horizontalInput,new Vector3(0,0,1));
         }
         verticalInput = Input.GetAxisRaw("Vertical");
-        if(verticalInput > 0 ) {
+        if(horizontalInput != 0 && verticalInput ==0) {
             droneIsOn = true;
-            playerRb.gravityScale = 0.2f;
-            playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed,verticalInput * Time.fixedDeltaTime * speed);
-        }
-        else {
-            if(verticalInput < 0) {
-                droneIsOn = true;
-                playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed,verticalInput * Time.fixedDeltaTime * speed);
-               
+            playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed * 1.5f ,playerRb.velocity.y);
+        } else {
+            if(horizontalInput != 0 && verticalInput != 0) {
+                playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed * 1.5f ,verticalInput * Time.fixedDeltaTime * speed);
             } else {
-                droneIsOn = false;
+
+
+                if(verticalInput > 0) {
+                    droneIsOn = true;
+                    playerRb.gravityScale = 0.2f;
+                    playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed * 1.5f,verticalInput * Time.fixedDeltaTime * speed);
+                } else {
+                    if(verticalInput < 0) {
+                        droneIsOn = true;
+                        playerRb.velocity = new Vector2(horizontalInput * Time.fixedDeltaTime * speed * 1.5f,verticalInput * Time.fixedDeltaTime * speed);
+
+                    } else {
+                        droneIsOn = false;
+                    }
+
+                }
             }
-           
         }
         if(grounded && verticalInput > 0) {
            
